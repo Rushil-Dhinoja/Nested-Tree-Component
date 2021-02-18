@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+/** @format */
+
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import "./App.css";
+import Item from "./Item";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// To store API data Locally
+	const [uiData, setUiData] = useState();
+
+	// To Make API Request
+	useEffect(() => {
+		// Function to make API request because useEffect itself can't be async
+		const dataCall = async () => {
+			const data = await Axios.get(
+				"http://www.mocky.io/v2/5cff79fc3200007100eac68f"
+			);
+
+			setUiData(data.data.responseData);
+		};
+
+		// Calling Function to get DATA
+		dataCall();
+	}, []);
+
+	// Returning JSX
+	return (
+		<div>
+			{/* The component to render the ITEM */}
+			<Item {...uiData} />
+		</div>
+	);
 }
 
 export default App;
