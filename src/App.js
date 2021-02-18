@@ -14,7 +14,7 @@ function App() {
 		// Function to make API request because useEffect itself can't be async
 		const dataCall = async () => {
 			const data = await Axios.get(
-				"http://www.mocky.io/v2/5cff79fc3200007100eac68f"
+				"https://www.mocky.io/v2/5cff79fc3200007100eac68f"
 			);
 
 			setUiData(data.data.responseData);
