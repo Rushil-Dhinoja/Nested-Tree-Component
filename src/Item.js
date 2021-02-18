@@ -2,6 +2,8 @@
 
 import React, { useCallback, useEffect, useState, useRef } from "react";
 
+import "./App.css";
+
 const Item = props => {
 	// Destructuring PROPS
 	const { source, children, checked } = props;
